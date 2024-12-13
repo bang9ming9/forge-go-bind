@@ -12,10 +12,13 @@ go build -o {PATH} .
 
 ## Option
 ```
-  -dir string
-        directory to scan for contracts (default "./")
   -out string
         output file
   -pkg string
         package name for the generated file (default "bindings")
+```
+
+## Usage
+```bash
+./forge-go-bind -out {OUTPUT_FILE} -pkg {PACKAGE_NAME} {FOUNDRY_PROJECT_PATH}
 ```

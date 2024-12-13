@@ -12,12 +12,12 @@ import (
 
 // flags
 var (
-	dirFlag     = flag.String("dir", "./", "directory to scan for contracts")
 	outFlag     = flag.String("out", "", "output file")
 	packageFlag = flag.String("pkg", "bindings", "package name for the generated file")
 )
 
 func main() {
+
 	// 1. flag 입력값을 확인한다.
 	pkg, outDir, rootDir, err := checkAndGetArgs()
 	if err != nil {
@@ -35,6 +35,11 @@ func main() {
 	})
 	if err != nil {
 		fmt.Println("fail to read directory", err, "\n", rootDir)
+		os.Exit(1)
+	}
+	// 2-1. .sol 파일이 없으면 종료한다.
+	if len(srcContracts) == 0 {
+		fmt.Println("no contracts found")
 		os.Exit(1)
 	}
 

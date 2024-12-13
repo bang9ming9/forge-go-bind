@@ -16,12 +16,18 @@ func checkAndGetArgs() (
 	err error,
 ) {
 	flag.Parse()
+
+	arg0 := flag.Arg(0)
+	if arg0 == "" {
+		arg0 = "."
+	}
+
 	pkg = *packageFlag
 	if pkg == "" {
 		err = errors.New("package name is required")
 	} else if outDir, err = filepath.Abs(*outFlag); err != nil {
 		err = fmt.Errorf("failed to get absolute path: %w", err)
-	} else if rootDir, err = filepath.Abs(*dirFlag); err != nil {
+	} else if rootDir, err = filepath.Abs(arg0); err != nil {
 		err = fmt.Errorf("failed to get absolute path: %w", err)
 	} else {
 		// 출력 디렉토리가 package 으로 끝나지 않으면 경로에 추가한다.
