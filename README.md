@@ -16,6 +16,6 @@ go build -o {PATH} .
         directory to scan for contracts (default "./")
   -out string
         output file
-  -package string
+  -pkg string
         package name for the generated file (default "bindings")
 ```

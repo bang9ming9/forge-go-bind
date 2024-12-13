@@ -14,7 +14,7 @@ import (
 var (
 	dirFlag     = flag.String("dir", "./", "directory to scan for contracts")
 	outFlag     = flag.String("out", "", "output file")
-	packageFlag = flag.String("package", "bindings", "package name for the generated file")
+	packageFlag = flag.String("pkg", "bindings", "package name for the generated file")
 )
 
 func main() {
